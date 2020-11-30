@@ -1,0 +1,11 @@
+{
+    "require": {
+        "illuminate/database": "^8.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "mf\\": "./src/mf",
+            "twitterapp\\": "./src/twitterapp"
+        }
+    }
+}
