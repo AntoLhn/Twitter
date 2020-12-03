@@ -25,7 +25,7 @@ class TweeterAdminController extends AbstractController
                 $auth = new TweeterAuthentification;
                 $auth->loginUser($username, $password);
             } catch (AuthentificationException $e) {
-                throw new AuthentificationException("Connexion impossible : l'utilisateur ou mot de passe incorrect");
+                (new \mf\router\Router)->executeRoute('login');
             }
             $vue = new TweeterView($auth);
             $vue->render('profil');
