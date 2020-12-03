@@ -8,13 +8,13 @@ abstract class AbstractAuthentification {
     const ACCESS_LEVEL_NONE = -9999; 
   
     /* l'identifiant de l'utilisateur connecté */ 
-    protected $user_login   = null;
+    protected $user_login = null;
 
     /* son niveau d'accès */
     protected $access_level = self::ACCESS_LEVEL_NONE; 
 
     /* vrai s'il est connecté */
-    protected $logged_in    = false;
+    protected $logged_in = false;
 
 
     /* un getter et un setter + toString */

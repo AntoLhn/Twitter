@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="Webetu">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/Tweeter" local="$PROJECT_DIR$" web="/Tweeter" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/vendor" />
+            <excludedPath local="true" path="$PROJECT_DIR$/tweeter_bd.sql" />
+            <excludedPath local="true" path="$PROJECT_DIR$/composer.phar" />
+            <excludedPath local="true" path="$PROJECT_DIR$/composer.lock" />
+            <excludedPath local="true" path="$PROJECT_DIR$/composer.json" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.idea" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.git" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

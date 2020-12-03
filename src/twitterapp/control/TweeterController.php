@@ -1,6 +1,9 @@
 <?php
 
 namespace twitterapp\control;
+use mf\auth\Authentification;
+use mf\auth\exception\AuthentificationException;
+use twitterapp\model\Follow;
 use \twitterapp\model\User;
 use \twitterapp\model\Tweet;
 use \twitterapp\view\TweeterView;
@@ -53,9 +56,9 @@ class TweeterController extends AbstractController {
          *  3 Retourner un block HTML qui met en forme la liste
          * 
          */
-        $tweets = Tweet::all();
+        $tweets = Tweet::select()->orderBy('created_at', 'desc')->get();
         $vue = new TweeterView($tweets);
-        return $vue->render('home');
+        $vue->render('home');
     }
 
 
@@ -86,7 +89,7 @@ class TweeterController extends AbstractController {
             $id = $this->request->get['id'];
             $tweet = Tweet::where('id', '=', $id)->first();
             $vue = new TweeterView($tweet);
-            return $vue->render('tweet');
+            $vue->render('tweet');
         }else{
             (new \mf\router\Router)->executeRoute('default');
         }
@@ -123,7 +126,7 @@ class TweeterController extends AbstractController {
             $author = User::where('id','=', $id)->first();
             $tweetsAuthor = $author->tweets()->get();
             $vue = new TweeterView($tweetsAuthor);
-            return $vue->render('userTweets');
+            $vue->render('userTweets');
         }else{
             (new \mf\router\Router)->executeRoute('default');
         }
@@ -132,6 +135,37 @@ class TweeterController extends AbstractController {
     public function newPostTweet(){
         $newTweet = Tweet::orderBy('id', 'desc')->first();
         $vue = new TweeterView($newTweet);
-        return $vue->render('post');
+        $vue->render('post');
+    }
+
+    public function viewFollowers(){
+        $auth = new Authentification();
+        $id = User::select('id')->where('username','=',$auth->user_login)->first();
+        $followers = Follow::select('followee')->where('follower', '=', $id['id'])->get();
+        $vue = new TweeterView($followers);
+        $vue->render('followers');
+    }
+
+    public function viewProfil(){
+        $auth = new Authentification();
+        $id = User::select('id')->where('username','=',$auth->user_login)->first();
+        $followers = Follow::select('follower')->where('followee', '=', $id['id'])->get();
+        $vue = new TweeterView($followers);
+        $vue->render('profil');
+    }
+
+    public function sendNewTweet(){
+        $auth = new Authentification();
+        $id = User::select('id')->where('username','=',$auth->user_login)->first();
+        if(!empty($this->request->post['text'])){
+            $newTweet = new Tweet();
+            $newTweet->text = $this->request->post['text'];
+            $newTweet->author = $id['id'];
+            $newTweet->save();
+        }else{
+            throw new AuthentificationException("Publication impossible : une erreure est survenue lors de l'envoi du tweet");
+        }
+        (new \mf\router\Router)->executeRoute('default');
+
     }
 }

@@ -1,4 +1,5 @@
 <?php
+session_start();
 ///////////////////////////////////////////////
 /// Auto-loader
 require_once __DIR__ . '/vendor/autoload.php';
@@ -73,19 +74,18 @@ echo $ctrl->viewHome();*/
 
 /// Routes
 $router = new Router();
-
 $router->addRoute('home', '/home/', '\twitterapp\control\TweeterController', 'viewHome', TweeterAuthentification::ACCESS_LEVEL_NONE);
 $router->addRoute('tweet', '/user/', '\twitterapp\control\TweeterController', 'viewTweet', TweeterAuthentification::ACCESS_LEVEL_NONE);
 $router->addRoute('userTweets', '/tweet/', '\twitterapp\control\TweeterController', 'viewUserTweets', TweeterAuthentification::ACCESS_LEVEL_NONE);
 $router->addRoute('post', '/post/', '\twitterapp\control\TweeterController', 'newPostTweet', TweeterAuthentification::ACCESS_LEVEL_USER);
 $router->addRoute('send', '/send/', '\twitterapp\control\TweeterController', 'sendNewTweet', TweeterAuthentification::ACCESS_LEVEL_USER);
-// Authentification
-$router->addRoute('login', '/followers/', '\twitterapp\control\TweeterAdminController', 'login', TweeterAuthentification::ACCESS_LEVEL_NONE);
+$router->addRoute('followers', '/followers/', '\twitterapp\control\TweeterController', 'viewFollowers', TweeterAuthentification::ACCESS_LEVEL_USER);
+$router->addRoute('profil', '/profil/', '\twitterapp\control\TweeterController', 'viewProfil', TweeterAuthentification::ACCESS_LEVEL_USER);
+// Administration
+$router->addRoute('login', '/login/', '\twitterapp\control\TweeterAdminController', 'login', TweeterAuthentification::ACCESS_LEVEL_NONE);
 $router->addRoute('checkLogin', '/checkLogin/', '\twitterapp\control\TweeterAdminController', 'checkLogin', TweeterAuthentification::ACCESS_LEVEL_NONE);
 $router->addRoute('logout', '/logout/', '\twitterapp\control\TweeterAdminController', 'logout', TweeterAuthentification::ACCESS_LEVEL_USER);
 $router->addRoute('signup', '/signup/', '\twitterapp\control\TweeterAdminController', 'signup', TweeterAuthentification::ACCESS_LEVEL_NONE);
 $router->addRoute('checkSignup', '/checkSignup/', '\twitterapp\control\TweeterAdminController', 'checkSignup', TweeterAuthentification::ACCESS_LEVEL_NONE);
 $router->setDefaultRoute('/home/');
-
-echo "<a href=".$router->urlFor('post').">Post</a>";
 $router->run();

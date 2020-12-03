@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1a4349ca-bfb7-4793-a9ec-a775ff32fad4" name="Default Changelist" comment="" />
+    <list default="true" id="1a4349ca-bfb7-4793-a9ec-a775ff32fad4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mf/auth/AbstractAuthentification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/mf/auth/AbstractAuthentification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mf/auth/Authentification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/mf/auth/Authentification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mf/auth/exception/AuthentificationException.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/mf/auth/exception/AuthentificationException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mf/router/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/mf/router/Router.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitterapp/auth/TweeterAuthentification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitterapp/auth/TweeterAuthentification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitterapp/control/TweeterAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitterapp/control/TweeterAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitterapp/control/TweeterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitterapp/control/TweeterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitterapp/model/Follow.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitterapp/model/Follow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitterapp/model/Like.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitterapp/model/Like.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitterapp/model/Tweet.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitterapp/model/Tweet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitterapp/model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitterapp/model/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/twitterapp/view/TweeterView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitterapp/view/TweeterView.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +28,9 @@
     <execution>
       <phar pharPath="$PROJECT_DIR$/composer.phar" interpreterId="7289a46d-1f65-487e-ae81-ab1121380175" />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -50,7 +69,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.deploy.options" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -81,7 +100,13 @@
       <workItem from="1606421468016" duration="2171000" />
       <workItem from="1606473077626" duration="1410000" />
       <workItem from="1606558824262" duration="8295000" />
-      <workItem from="1606677364232" duration="184000" />
+      <workItem from="1606677364232" duration="396000" />
+      <workItem from="1606828726715" duration="3192000" />
+      <workItem from="1606896394939" duration="272000" />
+      <workItem from="1606909257502" duration="7624000" />
+      <workItem from="1606926672896" duration="8131000" />
+      <workItem from="1606953245506" duration="6308000" />
+      <workItem from="1606982714912" duration="497000" />
     </task>
     <servers />
   </component>
@@ -97,18 +122,22 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="354" y="132" key="#Inspections/0.0.1440.900@0.0.1440.900" timestamp="1606081899495" />
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606566974879">
+    <state x="303" y="102" key="#SSH_Configurations" timestamp="1606828963145">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1606566974879" />
+    <state x="303" y="102" key="#SSH_Configurations/0.0.1440.900@0.0.1440.900" timestamp="1606828963145" />
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606831654549">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1606831654549" />
     <state x="525" y="136" key="#com.intellij.ide.util.MemberChooser" timestamp="1605963447381">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="525" y="136" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1605963447381" />
-    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606564390974">
+    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606957949727">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1606564390974" />
+    <state x="458" y="212" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1606957949727" />
     <state x="474" y="369" width="491" height="293" key="ComposerInitDialogKey" timestamp="1606421942090">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -117,18 +146,26 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="440" y="180" key="NewPhpClassDialog/0.0.1440.900@0.0.1440.900" timestamp="1606560628140" />
-    <state x="221" y="89" key="SettingsEditor" timestamp="1603456913329">
+    <state x="221" y="89" key="SettingsEditor" timestamp="1606831712844">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1603456913329" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1606560519436">
+    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1606831712844" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1606921743120">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1606560519436" />
+    <state width="500" height="445" key="SwitcherDM/0.0.1440.900@0.0.1440.900" timestamp="1606921743120" />
     <state x="797" y="23" width="643" height="820" maximized="true" key="dock-window-1" timestamp="1606566572050">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="797" y="23" width="643" height="820" maximized="true" key="dock-window-1/0.0.1440.900@0.0.1440.900" timestamp="1606566572050" />
+    <state x="626" y="187" width="373" height="525" key="ftp.server.browser" timestamp="1606829130513">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="626" y="187" width="373" height="525" key="ftp.server.browser/0.0.1440.900@0.0.1440.900" timestamp="1606829130513" />
+    <state x="591" y="349" key="publish.login" timestamp="1606828829915">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="591" y="349" key="publish.login/0.0.1440.900@0.0.1440.900" timestamp="1606828829915" />
     <state x="369" y="184" width="700" height="530" key="recent.locations.popup" timestamp="1603361856417">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

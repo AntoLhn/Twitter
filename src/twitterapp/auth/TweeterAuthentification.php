@@ -5,6 +5,7 @@ namespace twitterapp\auth;
 use mf\auth\exception\AuthentificationException;
 use mf\auth\Authentification;
 use \twitterapp\model\User;
+use twitterapp\view\TweeterView;
 
 class TweeterAuthentification extends Authentification {
 
@@ -52,16 +53,18 @@ class TweeterAuthentification extends Authentification {
     
     public function createUser($fullname, $username, $pass, $level=self::ACCESS_LEVEL_USER) {
         $user = User::where('username', '=', $username)->first();
-        if(empty($user)){
-            echo"SOULEVER UNE EXCEPTION";
+        if(!empty($user)){
+            throw new AuthentificationException("Inscription impossible : l'utilisateur existe déjà");
         }else{
-            //PAS SUR
+            $hash = $this->hashPassword($pass);
             $newUser = new User;
-            $newUser->fullname = request($fullname);
-            $newUser->username = request($username);
-            $newUser->password = request(hashPassword($pass));
-            $newUser->level = request($level);
+            $newUser->fullname = $fullname;
+            $newUser->username = $username;
+            $newUser->password = $hash;
+            $newUser->level = $level;
+            $newUser->followers = 0;
             $newUser->save();
+            $this->updateSession($username, $level);
         }
     }
 
@@ -85,11 +88,14 @@ class TweeterAuthentification extends Authentification {
     
     public function loginUser($username, $password){
         $user = User::where('username', '=', $username)->first();
-        try {
-            $this->login($username, $user->password, $password, self::ACCESS_LEVEL_USER);
-        } catch (AuthentificationException $e) {
-            throw new AuthentificationException(get_called_class()." : Connexion impossible : l'utilisateur ou mot de passe incorrect");
+        if($user != NULL) {
+            try {
+                $this->login($username, $user['password'], $password, $user['level']);
+            } catch (AuthentificationException $e) {
+                throw new AuthentificationException("Connexion impossible : l'utilisateur ou mot de passe incorrect");
+            }
+        }else{
+            throw new AuthentificationException("Connexion impossible : l'utilisateur n'existe pas");
         }
     }
-
 }

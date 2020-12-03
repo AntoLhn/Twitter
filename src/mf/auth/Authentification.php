@@ -1,7 +1,6 @@
 <?php
 
 namespace mf\auth;
-session_start();
 
 use mf\auth\exception\AuthentificationException;
 
@@ -10,7 +9,7 @@ class Authentification extends AbstractAuthentification{
     public function __construct(){
         if(isset($_SESSION['user_login'])){
             $this->user_login = $_SESSION['user_login'];
-            $this->user_login = $_SESSION['access_level'];
+            $this->access_level = $_SESSION['access_level'];
             $this->logged_in = true;
         }else {
             $this->user_login = null;
@@ -32,7 +31,9 @@ class Authentification extends AbstractAuthentification{
     public function logout()
     {
         // TODO: Implement logout() method.
-        session_destroy();
+        unset($_SESSION['user_login'],$_SESSION['access_level']);
+        $this->user_login = NULL;
+        $this->access_level = self::ACCESS_LEVEL_NONE;
         $this->logged_in = false;
     }
 
@@ -52,14 +53,14 @@ class Authentification extends AbstractAuthentification{
         if ($this->verifyPassword($given_pass, $db_pass) == true) {
             $this->updateSession($username, $level);
         } else {
-            throw new AuthentificationException(get_called_class()." : Connexion impossible : mot de passe incorrect");
+            throw new AuthentificationException("Connexion impossible : mot de passe incorrect");
         }
     }
 
     protected function hashPassword($password)
     {
         // TODO: Implement hashPassword() method.
-        password_hash($password, PASSWORD_DEFAULT);
+        return password_hash($password, PASSWORD_DEFAULT);
     }
 
     protected function verifyPassword($password, $hash)

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a77e4ae8-af91-4ecb-8d63-4af1bf958826" name="Webetu" url="http://webetu.iutnc.univ-lorraine.fr">
+        <fileTransfer rootFolder="/users/home/liehn6u/www/" accessType="SFTP" host="webetu.iutnc.univ-lorraine.fr" port="22" sshConfigId="61cf550b-e9a6-408a-9fd4-5bf65143e136" sshConfig="liehn6u@webetu.iutnc.univ-lorraine.fr:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

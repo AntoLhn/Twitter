@@ -2,8 +2,7 @@
 
 namespace mf\auth\exception;
 
-use Exception;
+use \Exception;
 
 class AuthentificationException extends Exception {
-    
 }

@@ -14,15 +14,17 @@ class Router extends AbstractRouter {
 
     public function run()
     {
-        $url = $this->http_req->path_info;
-        $auth = new Authentification();
-        if (array_key_exists($url, self::$routes) && $auth->checkAccessRight(self::$routes[$url][2])) {
-            $c_name = self::$routes[$url][0];
-            $m_name = self::$routes[$url][1];
+        if(array_key_exists($this->http_req->path_info, self::$routes)){
+            $url = $this->http_req->path_info;
         }else{
-            $c_name = self::$routes[self::$aliases['default']][0];
-            $m_name = self::$routes[self::$aliases['default']][1];
+            $url = self::$aliases['default'];
         }
+        $auth = new Authentification();
+        if(!$auth->checkAccessRight(self::$routes[$url][2])) {
+            $url = self::$aliases['default'];
+        }
+        $c_name = self::$routes[$url][0];
+        $m_name = self::$routes[$url][1];
         $c = new $c_name();
         $c->$m_name();
     }
@@ -58,9 +60,17 @@ class Router extends AbstractRouter {
     }
 
     public function executeRoute($alias){
-        $route = self::$aliases[$alias];
-        $c_name = self::$routes[$route][0];
-        $m_name = self::$routes[$route][1];
+        if(isset(self::$aliases[$alias])){
+            $url = self::$aliases[$alias];
+        }else{
+            $url = self::$aliases['default'];
+        }
+        $auth = new Authentification();
+        if(!$auth->checkAccessRight(self::$routes[$url][2])) {
+            $url = self::$aliases['default'];
+        }
+        $c_name = self::$routes[$url][0];
+        $m_name = self::$routes[$url][1];
         $c = new $c_name();
         $c->$m_name();
     }

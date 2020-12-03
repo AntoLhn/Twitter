@@ -2,6 +2,7 @@
 
 namespace twitterapp\view;
 
+use mf\auth\Authentification;
 use \twitterapp\model\Tweet;
 use \twitterapp\model\User;
 use \mf\router\Router;
@@ -28,7 +29,8 @@ class TweeterView extends \mf\view\AbstractView {
                     <nav id='navbar'>
                         <a class='tweet-control' href='".$url->urlFor('home')."'><img alt='home' src='".$root."/html/img/home.png'></a>";
         if (isset($_SESSION['user_login'])){
-            $return .= "<a class='tweet-control' href='".$url->urlFor('login')."'><img alt='followers' src='".$root."/html/img/followees.png'></a>                                  
+            $return .= "<a class='tweet-control' href='".$url->urlFor('profil')."'><img alt='followees' src='".$root."/html/img/followees.png'></a>                                  
+                       <a class='tweet-control' href='".$url->urlFor('followers')."'><img alt='followers' src='".$root."/html/img/followers.png'></a>                                  
                        <a class='tweet-control' href='".$url->urlFor('logout')."'><img alt='logout' src='".$root."/html/img/logout.png'></a>                                  
                     </nav>";
         }else{
@@ -107,6 +109,7 @@ class TweeterView extends \mf\view\AbstractView {
                             </a>
                             <div class='tweet-footer'>
                                 <span class='tweet-timestamp'>".$tweet->created_at."</span>
+                                <span class='tweet-timestamp'> | Like(s) ".$tweet->score."</span>
                                 <span class='tweet-author'>
                                     <a href='".$url->urlFor('userTweets',['id'=> $user->id])."'>".$user->fullname."</a>
                                 </span>
@@ -158,7 +161,7 @@ class TweeterView extends \mf\view\AbstractView {
         $url = new Router();
         return" <div id='tweet-form'>
                     <form method='post' action='".$url->urlFor('send')."'>
-                        <textarea style='width:100%; height:7rem;'></textarea>
+                        <textarea style='width:100%; height:7rem;' name='text'></textarea>
                         <input id='send_button' type='submit' name='send' value='send'>
                     </form>                    
                 </div>";
@@ -175,9 +178,17 @@ class TweeterView extends \mf\view\AbstractView {
     }
 
     protected function renderFollowers(){
-        $followers = count($this->data);
-        return" <h2>Tweets from</h2>
-                <p>".$followers." followers</p>
+        $url = new Router();
+        $return = "";
+        foreach ($this->data as $follower){
+            $user = User::select()->where('id','=',$follower->followee)->first();
+            $return .= "<a href='".$url->urlFor('userTweets',['id'=> $user->id])."'><li>".$user->username."</li></a>";
+        }
+        return" <h2>Currently following</h2>
+                <i>".count($this->data)." followers</i>
+                <ul>
+                    ".$return."
+                </ul>
         ";
     }
 
@@ -192,6 +203,42 @@ class TweeterView extends \mf\view\AbstractView {
                 
                     <button class="forms-button" name="login_button" type="submit">Create</button>
                 </form>';
+    }
+
+    public function renderProfil(){
+        $url = new Router();
+        $root = $url->http_req->root;
+        $followers = "";
+        foreach ($this->data as $follower){
+            $user = User::select()->where('id','=',$follower->follower)->first();
+            $followers .= "<a href='".$url->urlFor('userTweets',['id'=> $user->id])."'><li>".$user->username."</li></a>";
+        }
+        $auth = new Authentification();
+        $id = User::select('id')->where('username','=',$auth->user_login)->first();
+        $tweetUser = Tweet::select()->where('author','=',$id['id'])->get();
+        $title = "My posts ";
+        return" <div style='border: 1px solid; width: 100px; height: 100px; margin: 10px auto; border-radius: 50%; padding: 5%; background-color: #09c;'>
+                    <img alt='followers' src='".$root."/html/img/followees.png' width='80px' height='80px'>
+                    <h2>".$_SESSION['user_login']."</h2>
+                </div>
+                <h3>They follow me</h3>
+                <ul>
+                    ".$followers."
+                </ul>
+                ".$this->foreachTweets($tweetUser, $title);
+    }
+
+    public function renderNav()
+    {
+        $auth = new Authentification();
+        if($auth->logged_in === TRUE){
+            $url = new Router();
+            return '<div id="nav-menu">
+                        <div class="button theme-backcolor2">
+                        <a href="'.$url->urlFor('post').'">New</a>
+                        </div>
+                    </div>';
+        }
     }
 
     /* Méthode renderBody
@@ -209,6 +256,7 @@ class TweeterView extends \mf\view\AbstractView {
          */
         $header = $this->renderHeader();
         $footer = $this->renderFooter();
+        $nav = $this->renderNav();
 
         switch ($selector) {
             case 'home':
@@ -226,8 +274,11 @@ class TweeterView extends \mf\view\AbstractView {
             case 'login':
                 $section = $this->renderLogin($selector);
                 break;
-            case 'folowwers':
+            case 'followers':
                 $section = $this->renderFollowers($selector);
+                break;
+            case 'profil':
+                $section = $this->renderProfil($selector);
                 break;
             case 'signup':
                 $section = $this->renderSignup($selector);
@@ -240,7 +291,10 @@ class TweeterView extends \mf\view\AbstractView {
         <section>
             <article class="theme-backcolor2">
                 ${section}
-            </article>        
+            </article>
+            <nav id="menu" class="theme-backcolor1"> 
+                ${nav}     
+            </nav>
         </section>
         <footer class="theme-backcolor1">${footer}</footer>
 EOT;

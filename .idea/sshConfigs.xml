@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="webetu.iutnc.univ-lorraine.fr" id="61cf550b-e9a6-408a-9fd4-5bf65143e136" port="22" nameFormat="DESCRIPTIVE" username="liehn6u" />
+    </configs>
+  </component>
+</project>
