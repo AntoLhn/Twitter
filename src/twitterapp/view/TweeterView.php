@@ -41,13 +41,10 @@ class TweeterView extends AbstractView {
     }
 
     private function renderUserTweets(){
-        if (!get_object_vars( $this->data )){
-            foreach ($this->data as $tweet) {
+        $titre = "No tweet to display";
+        foreach ($this->data as $tweet) {
                 $user = $tweet->author()->first();
                 $titre = "<h2>All Tweets of " . $user->fullname . "</h2>";
-            }
-        }else{
-            $titre = "No tweet to display";
         }
 
         $selector = $this->foreachTweets($this->data);
