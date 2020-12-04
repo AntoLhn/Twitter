@@ -123,22 +123,28 @@ class TweeterView extends AbstractView {
         $root = $url->http_req->root;
         $followers = "";
         foreach ($this->data as $follower){
-            $user = User::select()->where('id','=',$follower->follower)->first();
-            $followers .= "<li><a href='".$url->urlFor('userTweets',['id'=> $user->id])."'>".$user->fullname."</a></li>";
+            $users = User::select()->where('id','=',$follower->follower)->first();
+            $followers .= "<li><a href='".$url->urlFor('userTweets',['id'=> $users->id])."'>".$users->fullname."</a></li>";
         }
         $auth = new Authentification();
         $id = User::select('id')->where('username','=',$auth->user_login)->first();
         $tweetUser = Tweet::select()->where('author','=',$id['id'])->get();
+        $mypost = $this->foreachTweets($tweetUser);
+        if(empty($mypost)){
+            $mypost ="<i>No tweet for the moment</i></br>
+                      <a href='".$url->urlFor('post')."'>Publish a new post</a>";
+        }
+        $user = User::select()->where('username','=',$_SESSION['user_login'])->first();
         return" <div style='border: 1px solid; width: 100px; height: 100px; margin: 10px auto; border-radius: 50%; padding: 5%; background-color: #09c;'>
                     <img alt='followers' src='".$root."/html/img/followees.png' width='80px' height='80px'>
-                    <h2>".$_SESSION['user_login']."</h2>
+                    <h2>".$user->fullname."</h2>
                 </div>
                 <h3>They follow me</h3>
                 <ul style='text-align: left; padding-left: 43%;'>
                     ".$followers."
                 </ul>
                 <h2>My posts </h2>
-                ".$this->foreachTweets($tweetUser);
+                ".$mypost;
     }
 
     private function foreachTweets($tweets){
@@ -169,7 +175,7 @@ class TweeterView extends AbstractView {
             $url = new Router();
             return '<div id="nav-menu">
                         <div class="button theme-backcolor2">
-                        <a href="'.$url->urlFor('post').'">New</a>
+                        <a href="'.$url->urlFor('post').'">Publish a new post</a>
                         </div>
                     </div>';
         }
