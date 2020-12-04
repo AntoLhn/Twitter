@@ -1,7 +1,10 @@
 <?php
 
 namespace twitterapp\model;
-class User extends \Illuminate\Database\Eloquent\Model
+
+use \Illuminate\Database\Eloquent\Model;
+
+class User extends Model
 {
     protected $table      = 'tweeter_user';  /* le nom de la table */
     protected $primaryKey = 'id';     /* le nom de la clé primaire */

@@ -3,7 +3,6 @@
 namespace mf\router;
 
 use mf\auth\Authentification;
-use mf\auth\exception\AuthentificationException;
 
 class Router extends AbstractRouter {
 

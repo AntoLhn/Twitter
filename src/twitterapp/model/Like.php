@@ -1,7 +1,10 @@
 <?php
 
 namespace twitterapp\model;
-class Like extends \Illuminate\Database\Eloquent\Model
+
+use \Illuminate\Database\Eloquent\Model;
+
+class Like extends Model
 {
     protected $table      = 'tweeter_like';  /* le nom de la table */
     protected $primaryKey = 'id';     /* le nom de la clé primaire */

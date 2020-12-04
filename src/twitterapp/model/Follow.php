@@ -1,7 +1,10 @@
 <?php
 
 namespace twitterapp\model;
-class Follow extends \Illuminate\Database\Eloquent\Model
+
+use \Illuminate\Database\Eloquent\Model;
+
+class Follow extends Model
 {
     protected $table      = 'tweeter_follow';  /* le nom de la table */
     protected $primaryKey = 'id';     /* le nom de la clé primaire */

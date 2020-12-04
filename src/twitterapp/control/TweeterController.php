@@ -7,7 +7,6 @@ use twitterapp\model\Follow;
 use \twitterapp\model\User;
 use \twitterapp\model\Tweet;
 use \twitterapp\view\TweeterView;
-use \mf\router\Router;
 use \mf\control\AbstractController;
 
 /* Classe TweeterController :

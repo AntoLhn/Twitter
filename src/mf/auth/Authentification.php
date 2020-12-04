@@ -50,9 +50,9 @@ class Authentification extends AbstractAuthentification{
     public function login($username, $db_pass, $given_pass, $level)
     {
         // TODO: Implement login() method.
-        if ($this->verifyPassword($given_pass, $db_pass) == true) {
+        if ($this->verifyPassword($given_pass, $db_pass) == true){
             $this->updateSession($username, $level);
-        } else {
+        }else{
             throw new AuthentificationException("Connexion impossible : mot de passe incorrect");
         }
     }

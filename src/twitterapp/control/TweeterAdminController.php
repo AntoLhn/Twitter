@@ -24,13 +24,15 @@ class TweeterAdminController extends AbstractController
             try {
                 $auth = new TweeterAuthentification;
                 $auth->loginUser($username, $password);
+                $user = User::where('username','=',$username);
+                $vue = new TweeterView($user);
+                $vue->render('profil');
             } catch (AuthentificationException $e) {
+                echo $e->getMessage();
                 (new \mf\router\Router)->executeRoute('login');
             }
-            $vue = new TweeterView($auth);
-            $vue->render('profil');
         }else{
-            (new \mf\router\Router)->executeRoute('default');
+            (new \mf\router\Router)->executeRoute('login');
         }
     }
 

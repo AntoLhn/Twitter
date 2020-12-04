@@ -5,7 +5,6 @@ namespace twitterapp\auth;
 use mf\auth\exception\AuthentificationException;
 use mf\auth\Authentification;
 use \twitterapp\model\User;
-use twitterapp\view\TweeterView;
 
 class TweeterAuthentification extends Authentification {
 
@@ -92,10 +91,10 @@ class TweeterAuthentification extends Authentification {
             try {
                 $this->login($username, $user['password'], $password, $user['level']);
             } catch (AuthentificationException $e) {
-                throw new AuthentificationException("Connexion impossible : l'utilisateur ou mot de passe incorrect");
+                throw new AuthentificationException("Connexion impossible : mot de passe incorrect.");
             }
         }else{
-            throw new AuthentificationException("Connexion impossible : l'utilisateur n'existe pas");
+            throw new AuthentificationException("Connexion impossible : l'utilisateur n'existe pas.");
         }
     }
 }

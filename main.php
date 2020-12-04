@@ -5,11 +5,11 @@ session_start();
 require_once __DIR__ . '/vendor/autoload.php';
 ///////////////////////////////////////////////
 /// Use
-use \twitterapp\model\Follow;
+/*use \twitterapp\model\Follow;
 use \twitterapp\model\Like;
 use \twitterapp\model\Tweet;
 use \twitterapp\model\User;
-use \twitterapp\control\TweeterController;
+use \twitterapp\control\TweeterController;*/
 use \mf\router\Router;
 use \mf\view\AbstractView;
 use \twitterapp\auth\TweeterAuthentification;
