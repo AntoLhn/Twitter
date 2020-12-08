@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1a4349ca-bfb7-4793-a9ec-a775ff32fad4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/twitterapp/view/TweeterView.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/twitterapp/view/TweeterView.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +93,9 @@
       <workItem from="1606926672896" duration="8131000" />
       <workItem from="1606953245506" duration="6308000" />
       <workItem from="1606982714912" duration="2038000" />
-      <workItem from="1607089416019" duration="11588000" />
+      <workItem from="1607089416019" duration="11653000" />
+      <workItem from="1607189627624" duration="90000" />
+      <workItem from="1607190568320" duration="445000" />
     </task>
     <servers />
   </component>
